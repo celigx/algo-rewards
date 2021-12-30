@@ -57,7 +57,8 @@ function App() {
         </div>
 
         <Output id="one" text='Governance APR' number={`${governanceAPR.toFixed(2)} %`} />
-        <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)}/>
+        <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)} />
+        <Output id="three" text='Staking APY' number={`${4.95} %`} />
       </div>
 
     </div>
