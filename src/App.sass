@@ -6,6 +6,18 @@ $light-color: #e9ecef
 h1, h2, h3, h4, h5, p, a
   margin: 0
 
+// Remove arrow spinners from input
+// Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+// Firefox
+input[type=number]
+  -moz-appearance: textfield
+  
+
 .app
   font-family: 'Montserrat', sans-serif
   text-align: center
@@ -15,6 +27,29 @@ h1, h2, h3, h4, h5, p, a
 
   .titleContainer
     padding: 50px 0
-  .title
-    color: $light-color
-    font-size: 32px
+    .title
+      color: $light-color
+      font-size: 32px
+
+  .container
+    display: grid
+    justify-content: center
+    grid-template-columns: 200px 200px
+    grid-auto-rows: 100px
+    grid-gap: 10px
+
+  .inputContainer
+    grid-column: 1 / 3
+    .title
+      color: $light-color
+      margin: 0 0 20px 0
+    .input
+      font-size: 26px
+      color: #2CB7BC
+      background: #2a3042
+      border: none
+      border-radius: 6px
+      width: -webkit-fill-available
+      padding: 10px
+      &:focus
+        outline: none
