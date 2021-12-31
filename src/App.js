@@ -10,6 +10,7 @@ function App() {
   const [governanceRewards, setGovernanceRewards] = useState(0)
   const [stakingRewards, setStakingRewards] = useState(0)
   const [totalRewards, setTotalRewards] = useState(0)
+  const [totalAlgo, setTotalAlgo] = useState(0)
 
   useEffect(() => {
     getData()
@@ -17,7 +18,8 @@ function App() {
     calculateGovernanceRewards()
     calculateStakingRewards()
     calculateTotalRewards()
-  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards])
+    calculateTotalAlgo()
+  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo])
 
   const getData = () => {
     fetch("https://governance.algorand.foundation/api/periods/governance-period-1/")
@@ -59,6 +61,12 @@ function App() {
     setTotalRewards(rewards)
   }
 
+  const calculateTotalAlgo = () => {
+    const total = totalRewards + parseInt(input)
+
+    setTotalAlgo(total)
+  }
+
   return (
     <div className="app">
 
@@ -77,6 +85,7 @@ function App() {
         <Output id="three" text='Staking APY' number={`${4.95} %`} />
         <Output id="four" text="Staking Rewards" number={stakingRewards.toFixed(2)} />
         <Output id="five" text="Total Rewards" number={totalRewards.toFixed(2)} />
+        <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
       </div>
 
     </div>
