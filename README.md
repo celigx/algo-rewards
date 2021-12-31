@@ -1,3 +1,3 @@
 ### Algo Governance Rewards and Staking Calculator
 
-![Algo Governance Rewards Calculator](../media/src/images/algo-rewards-desktop.png?raw=true)
+![Algo Governance Rewards Calculator](../media/images/algo-rewards-desktop.png?raw=true)
