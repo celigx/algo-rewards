@@ -8,12 +8,14 @@ function App() {
   const [input, setInput] = useState(0)
   const [governanceAPR, setGovernanceAPR] = useState(0)
   const [governanceRewards, setGovernanceRewards] = useState(0)
+  const [stakingRewards, setStakingRewards] = useState(0)
 
   useEffect(() => {
     getData()
     calculateGovernanceAPR()
     calculateGovernanceRewards()
-  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards])
+    calculateStakingRewards()
+  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards])
 
   const getData = () => {
     fetch("https://governance.algorand.foundation/api/periods/governance-period-1/")
@@ -43,6 +45,12 @@ function App() {
     setGovernanceRewards(rewards)
   }
 
+  const calculateStakingRewards = () => {
+    const rewards = ((input * 4.95) / 100) / 4
+
+    setStakingRewards(rewards)
+  }
+
   return (
     <div className="app">
 
@@ -59,6 +67,7 @@ function App() {
         <Output id="one" text='Governance APR' number={`${governanceAPR.toFixed(2)} %`} />
         <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)} />
         <Output id="three" text='Staking APY' number={`${4.95} %`} />
+        <Output id="four" text="Staking Rewards" number={stakingRewards.toPrecision(3)} />
       </div>
 
     </div>
