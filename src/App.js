@@ -11,6 +11,7 @@ function App() {
   const [stakingRewards, setStakingRewards] = useState(0)
   const [totalRewards, setTotalRewards] = useState(0)
   const [totalAlgo, setTotalAlgo] = useState(0)
+  const [governancePeriod, setGovernancePeriod] = useState(2)
 
   useEffect(() => {
     getData()
@@ -22,7 +23,7 @@ function App() {
   }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo])
 
   const getData = () => {
-    fetch("https://governance.algorand.foundation/api/periods/governance-period-1/")
+    fetch(`https://governance.algorand.foundation/api/periods/governance-period-${governancePeriod}/`)
     .then(response => response.json())
     .then(response => {
       setCommittedStake(response.total_committed_stake)
