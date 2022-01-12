@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.sass';
+import GovernanceData from './components/GovernanceData';
 import Output from './components/OutputData';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [totalRewards, setTotalRewards] = useState(0)
   const [totalAlgo, setTotalAlgo] = useState(0)
   const [governancePeriod, setGovernancePeriod] = useState(2)
+  const [governors, setGovernors] = useState(0)
 
   useEffect(() => {
     getData()
@@ -28,6 +30,7 @@ function App() {
     .then(response => {
       setCommittedStake(response.total_committed_stake)
       setRewardPoolAmount(response.algo_amount_in_reward_pool)
+      setGovernors(response.governor_count)
     });
   }
 
@@ -74,6 +77,8 @@ function App() {
       <div className="titleContainer">
         <h1 className='title'>Governance Rewards Calculator</h1>
       </div>
+
+      <GovernanceData committedStake={committedStake} rewardPoolAmount={rewardPoolAmount} governors={governors} />
 
       <div className="container">
         <div className="inputContainer">
