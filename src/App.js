@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.sass';
 import GovernanceData from './components/GovernanceData';
+import GovernancePeriod from './components/GovernancePeriod';
 import Output from './components/OutputData';
 
 function App() {
@@ -14,6 +15,14 @@ function App() {
   const [totalAlgo, setTotalAlgo] = useState(0)
   const [governancePeriod, setGovernancePeriod] = useState(2)
   const [governors, setGovernors] = useState(0)
+
+  const [governanceDateTime, setGovernanceDateTime] = useState({
+    votingStart: 0,
+    votingEnd: 0,
+    periodStart: 0,
+    registrationEnd: 0,
+    periodEnd: 0,
+  })
 
   useEffect(() => {
     getData()
@@ -31,6 +40,14 @@ function App() {
       setCommittedStake(response.total_committed_stake)
       setRewardPoolAmount(response.algo_amount_in_reward_pool)
       setGovernors(response.governor_count)
+      setGovernanceDateTime(prevState => ({
+        ...prevState,
+        votingStart: response.voting_sessions[0].voting_start_datetime,
+        votingEnd: response.voting_sessions[0].voting_end_datetime,
+        periodStart: response.start_datetime,
+        registrationEnd: response.registration_end_datetime,
+        periodEnd: response.end_datetime
+      }))
     });
   }
 
@@ -81,17 +98,23 @@ function App() {
       <GovernanceData committedStake={committedStake} rewardPoolAmount={rewardPoolAmount} governors={governors} />
 
       <div className="container">
-        <div className="inputContainer">
-          <p className='title'>Enter your ALGO amount</p>
-          <input type="number" placeholder='Enter ammount' className='input' onChange={inputValue} />
-        </div>
+        <div className="left">
 
-        <Output id="one" text='Governance APR' number={`${governanceAPR.toFixed(2)} %`} />
-        <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)} />
-        <Output id="three" text='Staking APY' number={`${4.95} %`} />
-        <Output id="four" text="Staking Rewards" number={stakingRewards.toFixed(2)} />
-        <Output id="five" text="Total Rewards" number={totalRewards.toFixed(2)} />
-        <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
+          <div className="inputContainer">
+            <p className='title'>Enter your ALGO amount</p>
+            <input type="number" placeholder='Enter ammount' className='input' onChange={inputValue} />
+          </div>
+
+          <Output id="one" text='Governance APR' number={`${governanceAPR.toFixed(2)} %`} />
+          <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)} />
+          <Output id="three" text='Staking APY' number={`${4.95} %`} />
+          <Output id="four" text="Staking Rewards" number={stakingRewards.toFixed(2)} />
+          <Output id="five" text="Total Rewards" number={totalRewards.toFixed(2)} />
+          <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
+        </div>
+        <div className="right">
+          <GovernancePeriod governanceDateTime={governanceDateTime} />
+        </div>
       </div>
 
     </div>

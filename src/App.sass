@@ -23,7 +23,7 @@ input[type=number]
   background: $dark-background
   color: $light-color
   min-height: 100vh
-  padding: 0 10px
+  padding: 0 30px
 
   .titleContainer
     padding: 50px 0
@@ -32,11 +32,13 @@ input[type=number]
       font-size: 32px
 
   .container
-    display: grid
-    justify-content: center
-    grid-template-columns: minmax(auto, 200px) minmax(auto, 200px)
-    grid-auto-rows: 100px
-    grid-gap: 10px
+    .left
+      display: grid
+      justify-content: center
+      grid-template-columns: minmax(auto, 285px) minmax(auto, 285px)
+      grid-template-columns: minmax(auto, 285px) minmax(auto, 285px)
+      grid-auto-rows: 100px
+      grid-gap: 10px
 
   .inputContainer
     grid-column: 1 / 3
@@ -83,3 +85,64 @@ input[type=number]
       .title
         font-weight: 500
         margin-bottom: 12px
+
+  .periodContainer
+    background: #2a3042
+    border-radius: 6px
+    max-width: 500px
+    padding: 30px 40px
+    margin: 0 auto
+    margin-top: 40px
+    .upperPart
+      text-align: left
+      margin-bottom: 30px
+      .period
+        font-weight: 300
+        margin-bottom: 30px
+      .governancePeriod
+        font-size: 30px
+        font-weight: 500
+        margin-bottom: 10px
+      .changePeriodButton
+        color: #2CB7BC
+        font-size: 14px
+        background: none
+        border: none
+        border-bottom: 2px solid #2CB7BC
+        cursor: pointer
+        padding: 0
+        &:hover
+          color: #2cb7bcc4
+          border-bottom: 2px solid #2cb7bcc4
+
+    .votingPeriod
+      border-bottom: 1px solid #fff
+      margin-bottom: 15px
+
+    .dateContainer
+      display: flex
+      align-items: center
+      justify-content: space-between
+      text-align: left
+      .text,
+      .date
+        font-size: 16px
+        font-weight: 300
+        margin-bottom: 15px
+
+@media screen and ( min-width: 1024px  )
+  .app
+    // background: blue
+    .container
+      display: flex
+      align-items: center
+      justify-content: space-between
+      max-width: 978px
+      margin: 0 auto
+      .left
+        display: grid
+        justify-content: center
+        grid-template-columns: minmax(auto, 200px) minmax(auto, 200px)
+        grid-auto-rows: 100px
+        grid-gap: 10px
+    
