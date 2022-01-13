@@ -1,5 +1,7 @@
 import '../App.sass';
 
+import * as dayjs from 'dayjs'
+
 const DateContainer = ({ text, date }) => {
   return (
     <div className="dateContainer">
@@ -19,13 +21,13 @@ const GovernancePeriod = ({ governanceDateTime }) => {
       </div>
 
       <div className="votingPeriod">
-        <DateContainer text={"Voting start"} date={governanceDateTime.votingStart} />
-        <DateContainer text={"Voting end"} date={governanceDateTime.votingEnd} />
+        <DateContainer text={"Voting start"} date={dayjs(governanceDateTime.votingStart).format("DD.MM.YYYY")} />
+        <DateContainer text={"Voting end"} date={dayjs(governanceDateTime.votingEnd).format("DD.MM.YYYY")} />
       </div>
 
-      <DateContainer text={"Period start"} date={governanceDateTime.periodStart} />
-      <DateContainer text={"Registration end"} date={governanceDateTime.registrationEnd} />
-      <DateContainer text={"Period end"} date={governanceDateTime.periodEnd} />
+      <DateContainer text={"Period start"} date={dayjs(governanceDateTime.periodStart).format("DD.MM.YYYY")} />
+      <DateContainer text={"Registration end"} date={dayjs(governanceDateTime.registrationEnd).format("DD.MM.YYYY")} />
+      <DateContainer text={"Period end"} date={dayjs(governanceDateTime.periodEnd).format("DD.MM.YYYY")} />
 
     </div>
   )
