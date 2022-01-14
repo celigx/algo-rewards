@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.sass';
 import GovernanceData from './components/GovernanceData';
 import GovernancePeriod from './components/GovernancePeriod';
+import GovernancePeriodModal from './components/GovernancePeriodModal';
 import Output from './components/OutputData';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     calculateStakingRewards()
     calculateTotalRewards()
     calculateTotalAlgo()
-  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo])
+  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo, governancePeriod])
 
   const getData = () => {
     fetch(`https://governance.algorand.foundation/api/periods/governance-period-${governancePeriod}/`)
@@ -116,6 +117,8 @@ function App() {
           <GovernancePeriod governanceDateTime={governanceDateTime} />
         </div>
       </div>
+
+      <GovernancePeriodModal governancePeriod={governancePeriod} setGovernancePeriod={setGovernancePeriod} />
 
     </div>
   );

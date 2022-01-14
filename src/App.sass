@@ -130,9 +130,42 @@ input[type=number]
         font-weight: 300
         margin-bottom: 15px
 
+  .modal
+    background: #2a3042
+    background: #111
+    position: fixed
+    top: 50%
+    left: 50%
+    width: 50%
+    max-width: 50vh
+    max-height: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 6px
+    padding: 20px 20px
+    .top
+      display: flex
+      align-items: center
+      justify-content: space-between
+      margin-bottom: 40px
+      .closeButton
+        background: none
+        color: #fff
+        font-size: 30px
+        border: none
+        cursor: pointer
+    .period
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 30px 20px
+      cursor: pointer
+      .checkIcon
+        font-size: 24px
+    .active
+      background: #2CB7BC
+
 @media screen and ( min-width: 1024px  )
   .app
-    // background: blue
     .container
       display: flex
       align-items: center
