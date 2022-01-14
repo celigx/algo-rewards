@@ -25,6 +25,8 @@ function App() {
     periodEnd: 0,
   })
 
+  const [showModal, setShowModal] = useState(false)
+
   useEffect(() => {
     getData()
     calculateGovernanceAPR()
@@ -114,11 +116,11 @@ function App() {
           <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
         </div>
         <div className="right">
-          <GovernancePeriod governanceDateTime={governanceDateTime} />
+          <GovernancePeriod governanceDateTime={governanceDateTime} setShowModal={setShowModal} />
         </div>
       </div>
 
-      <GovernancePeriodModal governancePeriod={governancePeriod} setGovernancePeriod={setGovernancePeriod} />
+      <GovernancePeriodModal governancePeriod={governancePeriod} setGovernancePeriod={setGovernancePeriod} showModal={showModal} setShowModal={setShowModal} />
 
     </div>
   );

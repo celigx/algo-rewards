@@ -10,17 +10,21 @@ const ChoosePeriod = ({ title, selectPeriod, governancePeriod, id }) => {
   )
 }
 
-const GovernancePeriodModal = ({ governancePeriod, setGovernancePeriod }) => {
+const GovernancePeriodModal = ({ governancePeriod, setGovernancePeriod, showModal, setShowModal }) => {
   const selectPeriod = (e) => {
     setGovernancePeriod(Number(e.target.id))
   }
 
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
-    <div className="modal">
+    <div className={showModal ? "modal showModal" : "modal"}>
 
       <div className="top">
         <h3 className="title">Choose Period</h3>
-        <button className="closeButton"><FiMinus /></button>
+        <button className="closeButton" onClick={closeModal}><FiMinus /></button>
       </div>
 
       <div className="bottom">

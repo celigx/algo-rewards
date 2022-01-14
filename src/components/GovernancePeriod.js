@@ -11,13 +11,17 @@ const DateContainer = ({ text, date }) => {
   )
 }
 
-const GovernancePeriod = ({ governanceDateTime }) => {
+const GovernancePeriod = ({ governanceDateTime, setShowModal }) => {
+  const openModal = () => {
+    setShowModal(true)
+  }
+
   return (
     <div className="periodContainer">
       <div className="upperPart">
         <h3 className="period">Period</h3>
         <h3 className="governancePeriod">Governance period #2</h3>
-        <button className="changePeriodButton">Change period</button>
+        <button className="changePeriodButton" onClick={openModal}>Change period</button>
       </div>
 
       <div className="votingPeriod">
