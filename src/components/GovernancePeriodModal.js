@@ -3,10 +3,10 @@ import { FiCheckCircle, FiMinus } from "react-icons/fi";
 
 const ChoosePeriod = ({ title, selectPeriod, governancePeriod, id }) => {
   return (
-    <div className={governancePeriod === id ? "period active" : "period"} onClick={selectPeriod} id={id}>
-      <h3 className='title'>{title}</h3>
-      {governancePeriod === id ? <FiCheckCircle className='checkIcon' /> : ''}
-    </div>
+    <button className={governancePeriod === id ? "period active" : "period"} onClick={selectPeriod} id={id}>
+      {title}
+      {governancePeriod === id ? <FiCheckCircle className='checkIcon' id={id} /> : null}
+    </button>
   )
 }
 
