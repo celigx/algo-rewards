@@ -34,7 +34,10 @@ function App() {
     calculateStakingRewards()
     calculateTotalRewards()
     calculateTotalAlgo()
-  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo, governancePeriod])
+
+    // Hide scrollbar when modal is displayed 
+    showModal ? document.body.classList.add('hideScrollbar') : document.body.classList.remove('hideScrollbar')
+  }, [input, committedStake, rewardPoolAmount, governanceAPR, governanceRewards, stakingRewards,totalRewards, totalAlgo, governancePeriod, showModal])
 
   const getData = () => {
     fetch(`https://governance.algorand.foundation/api/periods/governance-period-${governancePeriod}/`)
