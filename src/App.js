@@ -4,6 +4,7 @@ import GovernanceData from './components/GovernanceData';
 import GovernancePeriod from './components/GovernancePeriod';
 import GovernancePeriodModal from './components/GovernancePeriodModal';
 import Output from './components/OutputData';
+import { stakingAPY } from './helper/stakingAPY';
 
 function App() {
   const [committedStake, setCommittedStake] = useState(0)
@@ -77,7 +78,7 @@ function App() {
   }
 
   const calculateStakingRewards = () => {
-    const rewards = ((input * 4.95) / 100) / 4
+    const rewards = ((input * stakingAPY[governancePeriod]) / 100) / 4
 
     setStakingRewards(rewards)
   }
@@ -113,7 +114,7 @@ function App() {
 
           <Output id="one" text='Governance APR' number={`${governanceAPR.toFixed(2)} %`} />
           <Output id="two" text='Governance rewards' number={governanceRewards.toFixed(2)} />
-          <Output id="three" text='Staking APY' number={`${4.95} %`} />
+          <Output id="three" text='Staking APY' number={`${stakingAPY[governancePeriod]} %`} />
           <Output id="four" text="Staking Rewards" number={stakingRewards.toFixed(2)} />
           <Output id="five" text="Total Rewards" number={totalRewards.toFixed(2)} />
           <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
