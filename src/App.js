@@ -120,7 +120,7 @@ function App() {
           <Output id="six" text="Total Algo After Period" number={input === '' ? (0).toFixed(2) : totalAlgo.toFixed(2)} />
         </div>
         <div className="right">
-          <GovernancePeriod governanceDateTime={governanceDateTime} setShowModal={setShowModal} />
+          <GovernancePeriod governanceDateTime={governanceDateTime} setShowModal={setShowModal} governancePeriod={governancePeriod} />
         </div>
       </div>
 
