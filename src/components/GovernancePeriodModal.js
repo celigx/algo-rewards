@@ -28,6 +28,7 @@ const GovernancePeriodModal = ({ governancePeriod, setGovernancePeriod, showModa
       </div>
 
       <div className="bottom">
+        <ChoosePeriod title={"Governance period #3"} selectPeriod={selectPeriod} id={3} governancePeriod={governancePeriod} />
         <ChoosePeriod title={"Governance period #2"} selectPeriod={selectPeriod} id={2} governancePeriod={governancePeriod} />
         <ChoosePeriod title={"Governance period #1"} selectPeriod={selectPeriod} id={1} governancePeriod={governancePeriod} />
       </div>
