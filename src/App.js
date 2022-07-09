@@ -15,7 +15,7 @@ function App() {
   const [stakingRewards, setStakingRewards] = useState(0)
   const [totalRewards, setTotalRewards] = useState(0)
   const [totalAlgo, setTotalAlgo] = useState(0)
-  const [governancePeriod, setGovernancePeriod] = useState(3)
+  const [governancePeriod, setGovernancePeriod] = useState(4)
   const [governors, setGovernors] = useState(0)
 
   const [governanceDateTime, setGovernanceDateTime] = useState({
