@@ -25,8 +25,8 @@ const GovernancePeriod = ({ governanceDateTime, setShowModal, governancePeriod }
       </div>
 
       <div className="votingPeriod">
-        <DateContainer text={"Voting start"} date={dayjs(governanceDateTime.votingStart).format("DD.MM.YYYY")} />
-        <DateContainer text={"Voting end"} date={dayjs(governanceDateTime.votingEnd).format("DD.MM.YYYY")} />
+        <DateContainer text={"Voting start"} date={governanceDateTime.votingStart === undefined ? 'No Voting Session yet!' : dayjs(governanceDateTime.votingStart).format("DD.MM.YYYY")} />
+        <DateContainer text={"Voting end"} date={governanceDateTime.votingEnd === undefined ? 'No Voting Session yet!' : dayjs(governanceDateTime.votingEnd).format("DD.MM.YYYY")} />
       </div>
 
       <DateContainer text={"Period start"} date={dayjs(governanceDateTime.periodStart).format("DD.MM.YYYY")} />

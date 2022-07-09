@@ -49,8 +49,8 @@ function App() {
       setGovernors(response.governor_count)
       setGovernanceDateTime(prevState => ({
         ...prevState,
-        votingStart: response.voting_sessions[0].voting_start_datetime,
-        votingEnd: response.voting_sessions[0].voting_end_datetime,
+        votingStart: response.voting_sessions[0] === undefined ? undefined : response.voting_sessions[0].voting_start_datetime,
+        votingEnd: response.voting_sessions[0] === undefined ? undefined : response.voting_sessions[0].voting_end_datetime,
         periodStart: response.start_datetime,
         registrationEnd: response.registration_end_datetime,
         periodEnd: response.end_datetime
